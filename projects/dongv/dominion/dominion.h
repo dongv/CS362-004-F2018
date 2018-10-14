@@ -17,13 +17,13 @@
 
 enum CARD
   {curse = 0,
-   estate,
-   duchy,
-   province,
+   estate, 
+   duchy,  
+   province,//3
 
    copper,
    silver,
-   gold,
+   gold,//6
 
    adventurer,
    /* If no/only 1 treasure found, stop when full deck seen */
@@ -34,14 +34,14 @@ enum CARD
 	    money to put in hand */
    remodel, /* choice1 is hand# of card to remodel, choice2 is supply# */
    smithy,
-   village,
+   village,//14
 
    baron, /* choice1: boolean for discard of estate */
    /* Discard is always of first (lowest index) estate */
    great_hall,
    minion, /* choice1:  1 = +2 coin, 2 = redraw */
    steward, /* choice1: 1 = +2 card, 2 = +2 coin, 3 = trash 2 (choice2,3) */
-   tribute,
+   tribute, //19
 
    ambassador, /* choice1 = hand#, choice2 = number to return to supply */
    cutpurse,
@@ -49,7 +49,7 @@ enum CARD
    outpost,
    salvager, /* choice1 = hand# to trash */
    sea_hag,
-   treasure_map
+   treasure_map  //26
   };
 
 struct gameState {
