@@ -674,7 +674,7 @@ int rf_smithy(struct gameState *state, int handPos){
     int i;
     int currentPlayer = whoseTurn(state);
       //+3 Cards
-      for (i = 0; i < 2; i++) //*bug* get 2 additional cards instead of 3
+      for (i = 0; i < 3; i++) //*bug* get 2 additional cards instead of 3
 	{
 	  drawCard(currentPlayer, state);
 	}
@@ -690,7 +690,7 @@ int rf_village(struct gameState *state, int handPos){
       drawCard(currentPlayer, state);
 			
       //+2 Actions
-      state->numActions = state->numActions + 3;  //*bug* get +3 actions instead of 2
+      state->numActions = state->numActions + 2;  //*bug* get +3 actions instead of 2
 			
       //discard played card from hand
       discardCard(handPos, currentPlayer, state, 0);
@@ -703,7 +703,7 @@ int rf_adventurer(struct gameState *state, int handPos){
     int drawntreasure=0;
     int cardDrawn;
     int z = 0;// this is the counter for the temp hand
-      while(drawntreasure<3){                   //changed drawntreasure from 2 to 3  
+      while(drawntreasure<2){                   //changed drawntreasure from 2 to 3  
 	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 	  shuffle(currentPlayer, state);
 	}
