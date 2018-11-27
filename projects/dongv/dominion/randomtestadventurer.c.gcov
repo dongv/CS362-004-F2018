@@ -1,0 +1,71 @@
+        -:    0:Source:randomtestadventurer.c
+        -:    0:Graph:randomtestadventurer.gcno
+        -:    0:Data:randomtestadventurer.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/*
+        -:    2: * randomtestadventurer.c
+        -:    3: */
+        -:    4:
+        -:    5:/*
+        -:    6: * Include the following lines in your makefile:
+        -:    7: *
+        -:    8: * randomtestadventurer: randomtestadventurer.c dominion.o rngs.o
+        -:    9: *      gcc -o randomtestadventurer -g  randomtestadventurer.c dominion.o rngs.o $(CFLAGS)
+        -:   10: */
+        -:   11:
+        -:   12:
+        -:   13:#include "dominion.h"
+        -:   14:#include "dominion_helpers.h"
+        -:   15:#include <string.h>
+        -:   16:#include <stdio.h>
+        -:   17:#include <assert.h>
+        -:   18:#include "rngs.h"
+        -:   19:#include <stdlib.h>
+        -:   20:
+        -:   21:#define TESTCARD "adventurer"
+        -:   22:
+        1:   23:int main() {
+        -:   24:    int i;
+        1:   25:    int drawnTreasure = 0; 
+        1:   26:    int newCards = 2;
+        1:   27:    int discarded = 0;
+        -:   28:    //int choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
+        -:   29:    int shuffledCards;
+        1:   30:    int k[10] = {adventurer, feast, village, minion, mine, cutpurse,
+        -:   31:    sea_hag, tribute, smithy, council_room};
+        -:   32:
+        1:   33:printf("----------------- Testing Card: %s ----------------\n", TESTCARD);
+        -:   34:
+        -:   35:	
+        5:   36:for (i = 0; i < 4; i++){
+        -:   37:    struct gameState G, testG;
+        4:   38:    int seed = 1000;                            //random seed 1000
+        4:   39:    int numPlayers = rand()%2+2;		//number of players could be 2-4
+        4:   40:    int handpos = rand()%20;                     //randomize handpos, player's initial hand is 5
+        -:   41:    // initialize a game state and player cards
+        4:   42:    initializeGame(numPlayers, k, seed, &G);
+        -:   43:    // copy the game state to a test case
+        4:   44:    int thisPlayer = whoseTurn(&testG);	    //current player
+        4:   45:    testG.handCount[thisPlayer]=rand()%20;;
+        4:   46:    testG.deckCount[thisPlayer]=rand()%500;;
+        4:   47:    testG.numActions=rand()%20;
+        -:   48:
+        4:   49:    memcpy(&testG, &G, sizeof(struct gameState));
+        -:   50:    //cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
+        -:   51:    //shuffledCards = rf_adventurer(&testG, handpos); 
+        4:   52:    adventurerFunction(drawnTreasure, &testG, thisPlayer);
+        -:   53:    //printf("hand count = %d, expected = %d\n", testG.handCount[thisPlayer], G.handCount[thisPlayer] + newCards - discarded);
+        -:   54:    //printf("deck count = %d, expected = %d\n", testG.deckCount[thisPlayer], G.deckCount[thisPlayer] - newCards - shuffledCards);
+        -:   55:    //printf("discard count = %d, expected = %d\n", testG.discardCount[thisPlayer], G.discardCount[thisPlayer]+shuffledCards);
+        -:   56:    //printf("number of players = %d, hand position = %d\n", numPlayers, handpos);
+        4:   57:    assert(testG.handCount[thisPlayer] == G.handCount[thisPlayer] + newCards - discarded);
+        4:   58:    assert(testG.deckCount[thisPlayer] == G.deckCount[thisPlayer] - newCards - shuffledCards);
+        4:   59:    assert(testG.discardCount[thisPlayer] == G.discardCount[thisPlayer] + shuffledCards);
+        -:   60:}
+        1:   61:    printf("\n >>>>> SUCCESS: Testing complete %s <<<<<\n\n", TESTCARD);
+        -:   62:
+        1:   63:return 0;
+        -:   64:}
+        -:   65:
+        -:   66:

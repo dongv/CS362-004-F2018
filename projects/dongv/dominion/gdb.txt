@@ -1,0 +1,77 @@
+List of classes of commands:
+
+aliases -- Aliases of other commands
+breakpoints -- Making program stop at certain points
+data -- Examining data
+files -- Specifying and examining files
+internals -- Maintenance commands
+obscure -- Obscure features
+running -- Running the program
+stack -- Examining the stack
+status -- Status inquiries
+support -- Support facilities
+tracepoints -- Tracing of program execution without stopping the program
+user-defined -- User-defined commands
+
+Type "help" followed by a class name for a list of commands in that class.
+Type "help all" for the list of all commands.
+Type "help" followed by command name for full documentation.
+Type "apropos word" to search for commands related to "word".
+Command name abbreviations are allowed if unambiguous.
+Undefined command: "data".  Try "help".
+Examining data.
+
+List of commands:
+
+agent-printf -- Agent-printf "printf format string"
+append -- Append target code/data to a local file
+append binary -- Append target code/data to a raw binary file
+append binary memory -- Append contents of memory to a raw binary file
+append binary value -- Append the value of an expression to a raw binary file
+append memory -- Append contents of memory to a raw binary file
+append value -- Append the value of an expression to a raw binary file
+call -- Call a function in the program
+disassemble -- Disassemble a specified section of memory
+display -- Print value of expression EXP each time the program stops
+dump -- Dump target code/data to a local file
+dump binary -- Write target code/data to a raw binary file
+dump binary memory -- Write contents of memory to a raw binary file
+dump binary value -- Write the value of an expression to a raw binary file
+dump ihex -- Write target code/data to an intel hex file
+dump ihex memory -- Write contents of memory to an ihex file
+dump ihex value -- Write the value of an expression to an ihex file
+dump memory -- Write contents of memory to a raw binary file
+dump srec -- Write target code/data to an srec file
+dump srec memory -- Write contents of memory to an srec file
+dump srec value -- Write the value of an expression to an srec file
+dump tekhex -- Write target code/data to a tekhex file
+dump tekhex memory -- Write contents of memory to a tekhex file
+dump tekhex value -- Write the value of an expression to a tekhex file
+dump value -- Write the value of an expression to a raw binary file
+explore -- Explore a value or a type valid in the current context
+explore type -- Explore a type or the type of an expression valid in the current
+explore value -- Explore value of an expression valid in the current context
+find -- Search memory for a sequence of bytes
+init-if-undefined -- Initialize a convenience variable if necessary
+mem -- Define attributes for memory region or reset memory region handling to
+output -- Like "print" but don't put in value history and don't print newline
+print -- Print value of expression EXP
+print-object -- Ask an Objective-C object to print itself
+printf -- Printf "printf format string"
+ptype -- Print definition of type TYPE
+restore -- Restore the contents of FILE to target memory
+set -- Evaluate expression EXP and assign result to variable VAR
+set ada -- Prefix command for changing Ada-specfic settings
+set ada trust-PAD-over-XVS -- Enable or disable an optimization trusting PAD types over XVS types
+Quit
+Starting program: /nfs/stak/users/dongv/CS362-004-F2018/projects/dongv/dominion/randomtestcard1 break main
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff7742277 in raise () from /lib64/libc.so.6
+Error detected on fd 0
+error detected on stdin
+A debugging session is active.
+
+	Inferior 1 [process 19785] will be killed.
+
+Quit anyway? (y or n) EOF [assumed Y]
